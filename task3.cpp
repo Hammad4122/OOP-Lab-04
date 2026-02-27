@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 class Student {
 private:
     int studentID;
@@ -83,26 +84,29 @@ int main() {
         std::cin >> choice;
         if (choice == 'y' || choice == 'Y') {
             while (true)
-            {            
+            {          
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
                 std::cout<<"\nWhich student do you want to update marks for (1/2): ";
-                int studentChoice;
-                studentChoice = 0; // Reset student choice
+                int studentChoice = 0;
                 std::cin >> studentChoice;
-                std::cout<<"\nEnter new marks: ";
                 newMarks = 0; // Reset new marks
-                std::cin >> newMarks;
                 if (studentChoice == 1) {
+                    std::cout<<"\nEnter new marks: ";
+                    std::cin >> newMarks;
                     std::cout<<"\nAfter updating marks for student 1: ";
                     teacher.updateTotalMarks(student1, newMarks);
-                     std::cout << compareTotalMarks(student1, student2);
+                    std::cout << compareTotalMarks(student1, student2);
                     break;
                 } else if (studentChoice == 2) {
+                    std::cout<<"\nEnter new marks: ";
+                    std::cin >> newMarks;
                     teacher.updateTotalMarks(student2, newMarks);
                     std::cout<<"\nAfter updating marks for student 2: ";
                     std::cout << compareTotalMarks(student1, student2);
                     break;
                 } else {
-                    std::cerr << "\nInvalid student choice." << std::endl;
+                    std::cerr << "\n\033[31mInvalid student choice.\033[0m" << std::endl;
+                    
                 }
             }
             break;
@@ -111,11 +115,8 @@ int main() {
             break;
         }
         else {
-            std::cerr << "\nInvalid input." << std::endl;
-    
+            std::cerr << "\n\033[31mInvalid input.\033[0m" << std::endl;
         }
-    }
-
-    
+    }    
     return 0;
 }
