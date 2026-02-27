@@ -1,29 +1,29 @@
 #include <iostream>
-class beta; //Class beta forward declaration
-class alpha {
+class Beta; //Class beta forward declaration
+class Alpha {
 private:
     int data;
 public:
-    alpha() : data(3) {}
-    friend int sum(const alpha&, const beta&); // Friend function declaration
+    Alpha() : data(3) {}
+    friend int sum(const Alpha&, const Beta&); // Friend function declaration
 };
-class beta {
+class Beta {
 private:
     int data;
     public:
-    beta() : data(7) {}
-    friend int sum(const alpha&, const beta&); // Friend function declaration
+    Beta() : data(7) {}
+    friend int sum(const Alpha&, const Beta&); // Friend function declaration
 };
 
 // Friend function definition
-int sum(const alpha& a, const beta& b) {
+int sum(const Alpha& a, const Beta& b) {
     return a.data + b.data;
 }
 
 int main() {
-    alpha a;
-    beta b; 
+    Alpha a;
+    Beta b; 
     int result = sum(a, b);
-    std::cout << "Sum of data members of alpha and beta: " << result << std::endl;
+    std::cout << "Sum of data members of Alpha and Beta: " << result << std::endl;
     return 0;
 }

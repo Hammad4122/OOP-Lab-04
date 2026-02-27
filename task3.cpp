@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+#include <conio.h>
 class Student {
 private:
     int studentID;
@@ -118,5 +119,6 @@ int main() {
             std::cerr << "\n\033[31mInvalid input.\033[0m" << std::endl;
         }
     }    
+    getch();
     return 0;
 }
